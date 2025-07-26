@@ -284,6 +284,12 @@ class coreLightboxGallery {
 								 pswpModule: PhotoSwipe
 							});
 							${uiRegisterScript}
+
+							const deepZoomPlugin = new PhotoSwipeDeepZoom(lightbox, {
+								// deep zoom plugin options, for example:
+								tileSize: 256
+							});
+
 							lightbox.init();
 					  });
 				 </script>
@@ -303,6 +309,12 @@ class coreLightboxGallery {
 
 					  });
 					  ${uiRegisterScript}
+
+					  const deepZoomPlugin = new PhotoSwipeDeepZoom(lightbox, {
+						// deep zoom plugin options, for example:
+						tileSize: 256
+					  });
+
 					  lightbox.init();
 				 });
 			</script>
