@@ -12,7 +12,8 @@
             "photoswipe.esm.min.js",
             "photoswipe-lightbox.esm.min.js",
              "photoswipe.umd.min.js",
-             "photoswipe-lightbox.umd.min.js"
+            "photoswipe-lightbox.umd.min.js",
+            "photoswipe-deep-zoom-plugin.esm.min.js"
         ]
     },
     "config": [

@@ -275,6 +275,7 @@ class coreLightboxGallery {
 			return `
 				 <script src="${baseURL}/media/plugins/coreLightboxGallery/photoswipe.umd.min.js"></script>
 				 <script src="${baseURL}/media/plugins/coreLightboxGallery/photoswipe-lightbox.umd.min.js"></script>
+				 <script src="${baseURL}/media/plugins/coreLightboxGallery/photoswipe-deep-zoom-plugin.esm.min.js"></script>
 				 <script type="text/javascript">
 					  var galleries = document.querySelectorAll('.gallery');
 					  galleries.forEach(gallery => {
@@ -293,6 +294,7 @@ class coreLightboxGallery {
 		return `
 			<script type="module">
 				 import PhotoSwipeLightbox from '${baseURL}/media/plugins/coreLightboxGallery/photoswipe-lightbox.esm.min.js';
+				 import PhotoSwipeDeepZoom from '${baseURL}/media/plugins/coreLightboxGallery/photoswipe-deep-zoom-plugin.esm.min.js';
 				 const galleries = document.querySelectorAll('.gallery');
 				 galleries.forEach(gallery => {
 					  const lightbox = new PhotoSwipeLightbox({
