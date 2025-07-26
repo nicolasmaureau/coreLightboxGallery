@@ -18,7 +18,7 @@ class coreLightboxGallery {
 				const sizeMatch = anchorTag.match(/data-size="(\d+)x(\d+)"/);
 				if (sizeMatch) {
 					const [_, width, height] = sizeMatch;
-					return anchorTag.replace(/data-size="[^"]*"/, `data-pswp-width="${width}" data-pswp-height="${height}"`);
+					return anchorTag.replace(/data-size="[^"]*"/, `data-pswp-width="${width}" data-pswp-height="${height}" data-pswp-tile-type="deepzoom" data-pswp-tile-url="path/to/tiles/{z}/{x}_{y}.jpeg"`);
 				}
 				return anchorTag;
 			});
