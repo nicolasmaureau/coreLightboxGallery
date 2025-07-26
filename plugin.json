@@ -1,0 +1,403 @@
+{
+    "name": "Core Lightbox Gallery",
+    "description": "This plugin provides a fully-featured engine for displaying Publii galleries, utilizing the PhotoSwipe library to enhance the rendering of the native gallery markup",
+    "license": "GPL-3.0",
+    "author": "TidyCustoms",
+    "version": "1.1.1",
+    "scope": "site",
+    "minimumPubliiVersion": "0.43.0",
+    "assets": {
+        "front": [
+            "photoswipe.min.css",
+            "photoswipe.esm.min.js",
+            "photoswipe-lightbox.esm.min.js",
+             "photoswipe.umd.min.js",
+             "photoswipe-lightbox.umd.min.js"
+        ]
+    },
+    "config": [
+        {
+            "name": "initialZoomLevel",
+            "label": "Default zoom level on open",
+            "type": "radio",
+            "options": [
+                {
+                    "label": "Fit (default)",
+                    "value": "fit"
+                },
+                {
+                    "label": "Fill (cover viewport)",
+                    "value": "fill"
+                },
+                {
+                    "label": "Original size (1:1)",
+                    "value": "1"
+                }
+            ],
+            "value": "fit",
+            "note": "Set the zoom level applied when the lightbox first opens.",
+            "group": "Layout & Zoom"
+        },
+        {
+            "name": "secondaryZoomLevel",
+            "label": "Zoom level for interactive actions",
+            "value": 1,
+            "type": "range",
+            "min": 1,
+            "max": 4,
+            "step": 0.1,
+            "note": "Set the zoom level applied when interacting with an already opened image in the lightbox, such as double-tap or zoom button actions. A value of 1 means 'fill', where the image cover the entire viewport.",
+            "group": "Layout & Zoom"
+        },
+       
+        {
+            "name": "spacing",
+            "label": "Slide spacing",
+            "value": "0.1",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.05,
+            "note": "Set the spacing between slides as a ratio relative to the viewport width (e.g., 0.1 = 10%).",
+            "group": "Layout & Zoom"
+        },
+        {
+            "name": "padding",
+            "label": "Slide padding",
+            "type": "text",
+            "value": "top: 0, bottom: 0, left: 0, right: 0",
+            "note": "Define the padding around slides without units. The script will automatically interpret values as pixels. Example: top: 20, bottom: 40, left: 100, right: 100.",
+            "group": "Layout & Zoom"
+        },
+        
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "note": "Configure options related to the lightbox interface, including actions for images and controls visible when an image is already opened in the lightbox.",
+            "group": "Interface & Controls",
+            "size": "no-line"
+        },
+        {
+            "name": "imageClickAction",
+            "label": "Image click action",
+            "note": "'Zoom or close' - image will be closed if it cannot be zoomed (default imageClickAction).<br> 'Zoom' - zooms current image (depending on 'Zoom level for interactive actions' - default doubleTapAction). ",
+            "type": "radio",
+            "options": [
+                {
+                    "label": "Zoom or close",
+                    "value": "zoom-or-close"
+                },
+                {
+                    "label": "Zoom",
+                    "value": "zoom"
+                },
+                {
+                    "label": "Next slide",
+                    "value": "next"
+                },
+                {
+                    "label": "Close",
+                    "value": "close"
+                }
+            ],
+            "value": "zoom-or-close",
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "enableDownloadButton",
+            "label": "Show download button",
+            "type": "checkbox",
+            "value": true,
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "enableCloseButton",
+            "label": "Show close button",
+            "type": "checkbox",
+            "value": true,
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "enableZoomButton",
+            "label": "Show zoom button",
+            "type": "checkbox",
+            "value": true,
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "enableCounter",
+            "label": "Show counter",
+            "type": "checkbox",
+            "value": true,
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "enableArrows",
+            "label": "Show previous/next navigation",
+            "type": "checkbox",
+            "value": true,
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "enableCaption",
+            "label": "Show caption",
+            "type": "checkbox",
+            "value": true,
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "loop",
+            "label": "Loop through slides",
+            "type": "checkbox",
+            "value": true,
+            "note": "Allow navigation from the last slide to the first and vice versa.",
+            "group": "Accessibility & Navigation"
+        },
+        {
+            "name": "wheelToZoom",
+            "label": "Enable wheel to zoom",
+            "type": "checkbox",
+            "value": false,
+            "note": "Allow zooming with the mouse wheel without holding the control key.",
+            "group": "Accessibility & Navigation"
+        },
+        {
+            "name": "escKey",
+            "label": "Enable ESC key",
+            "type": "checkbox",
+            "value": true,
+            "note": "Allow closing the lightbox with the ESC key.",
+            "group": "Accessibility & Navigation"
+        },
+        {
+            "name": "arrowKeys",
+            "label": "Enable keyboard navigation",
+            "type": "checkbox",
+            "value": true,
+            "note": "Allow navigation with the left/right arrow keys.",
+            "group": "Accessibility & Navigation"
+        },
+
+        {
+            "name": "bgColor",
+            "label": "Overlay color",
+            "type": "colorpicker",
+            "value": "#000000",
+            "note": "Set the backdrop color for the overlay. Do not use RGBA for transparent backgrounds as it affects performance. Use the option below instead.",
+            "group": "Appearance"
+        },
+        {
+            "name": "bgColorOpacity",
+            "label": "Overlay opacity",
+            "type": "range",
+            "value": 0.6,
+            "min": 0,
+            "max": 1,
+            "step": 0.1,
+            "note": "Set the opacity level for the overlay color.",
+            "group": "Appearance"
+        },
+        {
+            "name": "placeholderBgColor",
+            "label": "Image placeholder  color",
+            "type": "colorpicker",
+            "value": "rgba(38, 40, 44, 1)",
+            "note": "Set the background color for image placeholders displayed while images are loading.",
+            "group": "Appearance"
+        },
+        {
+            "name": "uiBgColor",
+            "label": "UI background color",
+            "type": "colorpicker",
+            "value": "rgba(38, 40, 44, .5)",
+            "note": "Set the background color for UI elements, such as icons, buttons, and toolbars.",
+            "group": "Appearance"
+        },
+        {
+            "name": "uiElementsColor",
+            "label": "UI elements color",
+            "type": "colorpicker",
+            "value": "#ffffff",
+            "note": "Set the color for UI elements, such as icons and caption text",
+            "group": "Appearance"
+        },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "group": "Appearance",
+            "size": "empty thin small"
+        },
+        {
+            "name": "iconSet",
+            "label": "Icon set",
+            "type": "select",
+            "options": [
+                {
+                    "label": "Set 1",
+                    "value": "set1"
+                },
+                {
+                    "label": "Set 2",
+                    "value": "set2"
+                },
+                {
+                    "label": "Set 3",
+                    "value": "set3"
+                },
+                {
+                    "label": "Set 4",
+                    "value": "set4"
+                },
+                {
+                    "label": "Custom",
+                    "value": "custom"
+                }
+            ],
+            "value": "set1",
+            "note": "Choose a predefined set of icons or select 'Custom' to define your own.",
+            "group": "Appearance"
+        },
+        {
+            "name": "separator",
+            "type": "separator",
+            "label": "",
+            "note": "Configure options related to the lightbox interface, including actions for images and controls visible when an image is already opened in the lightbox.",
+            "group": "Interface & Controls",
+            "size": "no-line",
+            "dependencies": [
+                {
+                    "field": "iconSet",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "name": "downloadSVG",
+            "label": "Download button",
+            "type": "textarea",
+            "value": "",
+            "note": "Define the SVG for the 'download' button by pasting your SVG code here. Please ensure that the SVG uses 'stroke' instead of 'fill' for coloring, as the color options apply to 'stroke'. Set 'fill' to 'none' to ensure proper styling.",
+            "group": "Appearance",
+            "dependencies": [
+                {
+                    "field": "iconSet",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "name": "arrowPrevSVG",
+            "label": "Previous / Next buttons",
+            "type": "textarea",
+            "value": "",
+            "note": "Define the SVG for the 'previous arrow' button by pasting your SVG code here. The 'next arrow' icon will be automatically generated based on this icon.",
+            "group": "Appearance",
+            "dependencies": [
+                {
+                    "field": "iconSet",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "name": "closeSVG",
+            "label": "Close button",
+            "type": "textarea",
+            "value": "",
+            "note": "Define the SVG for the 'close' button by pasting your SVG code here.",
+            "group": "Appearance",
+            "dependencies": [
+                {
+                    "field": "iconSet",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "name": "zoomSVG",
+            "label": "Zoom button",
+            "type": "textarea",
+            "value": "",
+            "note": "Define the SVG for the 'zoom-out' button by pasting your SVG code here.",
+            "group": "Appearance",
+            "dependencies": [
+                {
+                    "field": "iconSet",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "name": "iconStrokeWidth",
+            "label": "Icon stroke width",
+            "type": "range",
+            "min": 1,
+            "max": 3,
+            "step": 0.5,
+            "value": 1.5,
+            "note": "Define the stroke width for icons in pixels.",
+            "group": "Appearance"
+        },
+        {
+            "name": "iconSize",
+            "label": "Icon size",
+            "type": "range",
+            "min": 16,
+            "max": 48,
+            "step": 2,
+            "value": 24,
+            "note": "Define the icon size (width and height) in pixels. ",
+            "group": "Appearance"
+        },
+
+        {
+            "name": "transitionEffect",
+            "label": "Transition effect",
+            "type": "radio",
+            "options": [
+                {
+                    "label": "Zoom",
+                    "value": "zoom"
+                },
+                {
+                    "label": "Fade",
+                    "value": "fade"
+                },
+                {
+                    "label": "None",
+                    "value": "none"
+                }
+            ],
+            "value": "zoom",
+            "note": "Choose the animation effect for opening and closing the lightbox.",
+            "group": "Animation"
+        },
+        {
+            "name": "showAnimationDuration",
+            "label": "Show animation duration (ms)",
+            "type": "number",
+            "value": 333,
+            "note": "Set the duration of the opening animation in milliseconds.",
+            "group": "Animation"
+        },
+        {
+            "name": "hideAnimationDuration",
+            "label": "Hide animation duration (ms)",
+            "type": "number",
+            "value": 333,
+            "note": "Set the duration of the closing animation in milliseconds.",
+            "group": "Animation"
+        },
+        {
+            "name": "easing",
+            "label": "Animation timing curve",
+            "type": "text",
+            "value": "cubic-bezier(.4,0,.22,1)",
+            "note": "Define the curve that controls the animation speed over time (CSS timing-function, e.g., ease, linear, cubic-bezier).",
+            "group": "Animation"
+        }
+        
+    ]
+}
