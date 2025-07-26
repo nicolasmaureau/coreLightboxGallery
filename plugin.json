@@ -11,7 +11,7 @@
             "photoswipe.min.css",
             "photoswipe.esm.min.js",
             "photoswipe-lightbox.esm.min.js",
-             "photoswipe.umd.min.js",
+            "photoswipe.umd.min.js",
             "photoswipe-lightbox.umd.min.js",
             "photoswipe-deep-zoom-plugin.esm.min.js"
         ]
@@ -50,7 +50,6 @@
             "note": "Set the zoom level applied when interacting with an already opened image in the lightbox, such as double-tap or zoom button actions. A value of 1 means 'fill', where the image cover the entire viewport.",
             "group": "Layout & Zoom"
         },
-       
         {
             "name": "spacing",
             "label": "Slide spacing",
@@ -70,7 +69,6 @@
             "note": "Define the padding around slides without units. The script will automatically interpret values as pixels. Example: top: 20, bottom: 40, left: 100, right: 100.",
             "group": "Layout & Zoom"
         },
-        
         {
             "name": "separator",
             "type": "separator",
@@ -123,7 +121,7 @@
             "name": "enableZoomButton",
             "label": "Show zoom button",
             "type": "checkbox",
-            "value": true,
+            "value": false,
             "group": "Interface & Controls"
         },
         {
@@ -179,7 +177,6 @@
             "note": "Allow navigation with the left/right arrow keys.",
             "group": "Accessibility & Navigation"
         },
-
         {
             "name": "bgColor",
             "label": "Overlay color",
@@ -352,7 +349,6 @@
             "note": "Define the icon size (width and height) in pixels. ",
             "group": "Appearance"
         },
-
         {
             "name": "transitionEffect",
             "label": "Transition effect",
@@ -398,7 +394,22 @@
             "value": "cubic-bezier(.4,0,.22,1)",
             "note": "Define the curve that controls the animation speed over time (CSS timing-function, e.g., ease, linear, cubic-bezier).",
             "group": "Animation"
+        },
+        {
+            "name": "allowPanToNext",
+            "label": "Allow pan to next slide",
+            "type": "checkbox",
+            "value": false,
+            "note": "Enable navigation to the next slide by panning left or right when the image is zoomed in.",
+            "group": "Interface & Controls"
+        },
+        {
+            "name": "allowMouseDrag",
+            "label": "Allow mouse drag to navigate",
+            "type": "checkbox",
+            "value": true,
+            "note": "Enable navigation to the next slide by dragging the mouse left or right when the image is zoomed in.",
+            "group": "Interface & Controls"
         }
-        
     ]
 }

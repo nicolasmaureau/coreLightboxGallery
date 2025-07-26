@@ -158,6 +158,9 @@ class coreLightboxGallery {
 		const arrowNextSVG = arrowPrevSVG;
 		const enableArrows = !!this.config.enableArrows;
 		const enableZoom = !!this.config.enableZoomButton;
+		const allowPanToNext = !!this.config.allowPanToNext;
+		const allowMouseDrag = !!this.config.allowMouseDrag;
+
 		const enableClose = !!this.config.enableCloseButton;
 		const enableCounter = !!this.config.enableCounter;
 		const enableDownload = !!this.config.enableDownloadButton;
@@ -185,6 +188,8 @@ class coreLightboxGallery {
 			`arrowNext: ${enableArrows}`,
 			`close: ${enableClose}`,
 			`zoom: ${enableZoom}`,
+			`allowPanToNext: ${allowPanToNext}`,
+			`allowMouseDrag: ${allowMouseDrag}`,
 			`counter: ${enableCounter}`,
 			`preload: [1, 2]`,
 			`bgOpacity: ${bgColorOpacity}`
